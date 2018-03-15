@@ -11,7 +11,7 @@ response_cleaner <- function(response) {
   
   # Step 2: Indicate to the user whether the request was successful or not
   
-  print(paste("The request was returned with status code", status_code))
+  #print(paste("The request was returned with status code", status_code))
   
   # Step 3: Check to see if the status code is acceptable. If error, return it as a data.frame
   

@@ -1,6 +1,8 @@
 
 get_company_info <- function(company_url, token) {
   
+  library(httr)
+        
   #Step 1: Configure the parts of the URL that will be used in the GET request
   
   base_url <- "https://company.clearbit.com/v2/companies/find?domain="

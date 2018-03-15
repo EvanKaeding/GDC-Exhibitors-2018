@@ -12,7 +12,7 @@ company_lookup <- function(companies, key){
         
         for(i in seq_along(1:nrow(companies))){
                 
-                print(paste("Pulling data for", companies[i,1]))
+                #print(paste("Pulling data for", companies[i,1]))
                 
                 response <- get_company_info(companies[i,1], key)
                 
@@ -22,6 +22,6 @@ company_lookup <- function(companies, key){
                 
                 save(list = companies[i,1], file = paste0(companies[i,1], ".rda"))
                 
-                print(paste("Saving data for", companies[i,1]))
+                #print(paste("Saving data for", companies[i,1]))
         }
 }
