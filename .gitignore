@@ -1,0 +1,3 @@
+*.csv
+/responses/*
+/responses-2/*
