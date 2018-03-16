@@ -112,12 +112,12 @@ kable(data.frame(na.values = sapply(company_details, function(x) sum(is.na(x))))
 
 | variable           |  na.values| missing\_info |
 |:-------------------|----------:|:--------------|
-| name               |         47| 16%           |
+| name               |         49| 17%           |
 | tags               |          0| 0%            |
-| description        |         61| 21%           |
-| country            |        120| 41%           |
-| state              |        127| 44%           |
-| crunchbase\_handle |        130| 45%           |
+| description        |         62| 21%           |
+| country            |        119| 41%           |
+| state              |        126| 43%           |
+| crunchbase\_handle |        131| 45%           |
 | employees          |        151| 52%           |
 | employee\_range    |        151| 52%           |
 | revenue            |        179| 62%           |
@@ -164,7 +164,7 @@ tile_plot <- data.frame(table(select(company_details, revenue, employee_range)))
         ggplot(mapping = aes(x = revenue, y = employee_range)) +
         geom_tile(aes(fill = Freq)) +
         geom_text(aes(label = Freq)) +
-        ggtitle("Exbibitors by Revenue and Employee Range") +
+        ggtitle("Exhibitors by Revenue and Employee Range") +
         theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 print(suppressWarnings(tile_plot))
