@@ -8,6 +8,14 @@ Who's Exhibiting at GDC this year?
 
 I wanted to take a closer look at who was exhibiting at GDC this year, so I decided to take a data-driven approach. Have a look!
 
+### Following Along
+
+I crafted this markdown file so that you can follow along and build the visualizations on your own machine. Simply clone the repository into your local working directory and get started.
+
+Keep in mind that I won't be sharing my Clearbit API key, so if you want to do your own analysis, you'll obviously want to get your own API key. Save it as a character vector as `key.rda` in your working directory. Your first 50 API calls are free, so you'll get about 20% of the data.
+
+If you don't want to make API calls to Clearbit, I recommend just commenting out the code block. I'll alert you as to where that is and what to comment out.
+
 ### Importing and Downloading Data on the Exhibitors
 
 First, we'll need to start with a list of the exhibitors. Well, not a `list` per se, but at the very least something that we can use to identify each of the companies exhibiting at GDC. Fortunately, the folks at GDC make this readily available at this link [here](%5Bhttp://expo.gdconf.com/2018/exhibitor-list/).
@@ -16,7 +24,7 @@ Now, I won't release the code that extracts this informaiton from the webpage fo
 
 Once we have the `data.frame` containing the URL for each company exhibiting, we'll need to get some more information on these companies. I decided to give **Clearbit's Enrichment API** a try, as I've used their Salesforce and HubSpot integrations before and had some good success. Although I had never interacted with their API before, it was very quick to pick up.
 
-I wrote these two functions to help interact with their API:
+I wrote these functions to help interact with their API:
 
 ``` r
 source("get_company_info.R")
@@ -43,12 +51,16 @@ setwd(file.path("./responses"))
 
 # Populate the responses directory with cleaned API responses from Clearbit
 
+### --- COMMENT THIS OUT IF YOU DON'T WANT TO MAKE YOUR OWN API CALLS --- ###
+
 company_lookup(companies = exhibitors, key = key)
 ```
 
 ### Extraction and Enrichment
 
 Now, we have a whole directory full of API responses ready to parse. We'll need to employ some clever `apply` functions to avoid looping through all of these to get the relevant informaiton.
+
+**Note for those following along**: You can comment out all of the code blocks between here and the visualization section. I've populated the repository with the final, cleaned file called `company-details.rda` that you'll use for visualization.
 
 ``` r
 source("extract_details.R")
@@ -103,8 +115,8 @@ kable(data.frame(na.values = sapply(company_details, function(x) sum(is.na(x))))
 | name               |         47| 16%           |
 | tags               |          0| 0%            |
 | description        |         61| 21%           |
-| country            |        119| 41%           |
-| state              |        126| 43%           |
+| country            |        120| 41%           |
+| state              |        127| 44%           |
 | crunchbase\_handle |        130| 45%           |
 | employees          |        151| 52%           |
 | employee\_range    |        151| 52%           |
